@@ -29,13 +29,11 @@ public final class GetNetworkSegmentsResult {
      */
     private List<String> segments;
     /**
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     private @Nullable String token;
 
     private GetNetworkSegmentsResult() {}
@@ -61,13 +59,11 @@ Please use the token argument in the provider configuration */
         return this.segments;
     }
     /**
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }

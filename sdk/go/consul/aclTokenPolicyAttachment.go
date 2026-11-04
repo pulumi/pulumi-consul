@@ -196,6 +196,12 @@ func (AclTokenPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenPolicyAttachmentState)(nil)).Elem()
 }
 
+// AclTokenPolicyAttachmentExists checks whether an existing AclTokenPolicyAttachment resource with the given ID exists.
+func AclTokenPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclTokenPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", id, state, "", opts...)
+}
+
 type aclTokenPolicyAttachmentArgs struct {
 	// The name of the policy attached to the token.
 	Policy string `pulumi:"policy"`

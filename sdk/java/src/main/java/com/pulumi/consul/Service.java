@@ -218,11 +218,10 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableTagOverride);
     }
     /**
-     * @deprecated
-     * The external field has been deprecated and does nothing.
+     * @deprecated The external field has been deprecated and does nothing.
      * 
      */
-    @Deprecated /* The external field has been deprecated and does nothing. */
+    @Deprecated
     @Export(name="external", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> external;
 

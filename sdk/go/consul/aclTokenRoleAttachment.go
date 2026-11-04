@@ -205,6 +205,12 @@ func (AclTokenRoleAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenRoleAttachmentState)(nil)).Elem()
 }
 
+// AclTokenRoleAttachmentExists checks whether an existing AclTokenRoleAttachment resource with the given ID exists.
+func AclTokenRoleAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclTokenRoleAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", id, state, "", opts...)
+}
+
 type aclTokenRoleAttachmentArgs struct {
 	// The role name.
 	Role string `pulumi:"role"`

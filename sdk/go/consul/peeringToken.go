@@ -119,6 +119,12 @@ func (PeeringTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringTokenState)(nil)).Elem()
 }
 
+// PeeringTokenExists checks whether an existing PeeringToken resource with the given ID exists.
+func PeeringTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeeringTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/peeringToken:PeeringToken", id, state, "", opts...)
+}
+
 type peeringTokenArgs struct {
 	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      map[string]string `pulumi:"meta"`

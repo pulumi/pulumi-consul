@@ -134,6 +134,12 @@ func (AclPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclPolicyState)(nil)).Elem()
 }
 
+// AclPolicyExists checks whether an existing AclPolicy resource with the given ID exists.
+func AclPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclPolicy:AclPolicy", id, state, "", opts...)
+}
+
 type aclPolicyArgs struct {
 	// The datacenters of the policy.
 	Datacenters []string `pulumi:"datacenters"`

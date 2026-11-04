@@ -136,13 +136,11 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 

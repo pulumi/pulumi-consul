@@ -248,6 +248,18 @@ class CertificateAuthority(pulumi.CustomResource):
         __props__.__dict__["connect_provider"] = connect_provider
         return CertificateAuthority(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_provider: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["configJson"] = config_json
+        __props__["connectProvider"] = connect_provider
+        return pulumi.runtime.exists_resource(None, 'consul:index/certificateAuthority:CertificateAuthority', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")

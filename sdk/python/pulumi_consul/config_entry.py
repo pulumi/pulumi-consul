@@ -862,6 +862,22 @@ class ConfigEntry(pulumi.CustomResource):
         __props__.__dict__["partition"] = partition
         return ConfigEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configJson"] = config_json
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntry:ConfigEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configJson")
     def config_json(self) -> pulumi.Output[Optional[_builtins.str]]:

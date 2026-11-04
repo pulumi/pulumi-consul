@@ -364,7 +364,7 @@ Please use the token argument in the provider configuration")]
         /// <summary>
         /// the common prefix shared by all keys being read.
         /// * `var.&lt;name&gt;` - For each name given, the corresponding attribute
-        /// has the value of the key.
+        ///   has the value of the key.
         /// </summary>
         public readonly string PathPrefix;
         public readonly ImmutableArray<Outputs.GetKeyPrefixSubkeyCollectionResult> SubkeyCollection;

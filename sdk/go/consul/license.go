@@ -179,6 +179,12 @@ func (LicenseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseState)(nil)).Elem()
 }
 
+// LicenseExists checks whether an existing License resource with the given ID exists.
+func LicenseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LicenseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/license:License", id, state, "", opts...)
+}
+
 type licenseArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.

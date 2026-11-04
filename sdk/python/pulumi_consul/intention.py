@@ -557,6 +557,28 @@ class Intention(pulumi.CustomResource):
         __props__.__dict__["source_namespace"] = source_namespace
         return Intention(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_namespace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["datacenter"] = datacenter
+        __props__["description"] = description
+        __props__["destinationName"] = destination_name
+        __props__["destinationNamespace"] = destination_namespace
+        __props__["meta"] = meta
+        __props__["sourceName"] = source_name
+        __props__["sourceNamespace"] = source_namespace
+        return pulumi.runtime.exists_resource(None, 'consul:index/intention:Intention', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

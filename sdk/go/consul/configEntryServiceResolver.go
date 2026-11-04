@@ -181,6 +181,12 @@ func (ConfigEntryServiceResolverState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryServiceResolverState)(nil)).Elem()
 }
 
+// ConfigEntryServiceResolverExists checks whether an existing ConfigEntryServiceResolver resource with the given ID exists.
+func ConfigEntryServiceResolverExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryServiceResolverState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", id, state, "", opts...)
+}
+
 type configEntryServiceResolverArgs struct {
 	// Specifies the timeout duration for establishing new network connections to this service.
 	ConnectTimeout *string `pulumi:"connectTimeout"`

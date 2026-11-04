@@ -388,6 +388,32 @@ class Peering(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return Peering(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ca_pems: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_server_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_token: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletedAt"] = deleted_at
+        __props__["meta"] = meta
+        __props__["partition"] = partition
+        __props__["peerCaPems"] = peer_ca_pems
+        __props__["peerId"] = peer_id
+        __props__["peerName"] = peer_name
+        __props__["peerServerAddresses"] = peer_server_addresses
+        __props__["peerServerName"] = peer_server_name
+        __props__["peeringToken"] = peering_token
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'consul:index/peering:Peering', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletedAt")
     def deleted_at(self) -> pulumi.Output[_builtins.str]:

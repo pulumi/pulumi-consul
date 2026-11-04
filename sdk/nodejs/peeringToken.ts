@@ -32,6 +32,17 @@ export class PeeringToken extends pulumi.CustomResource {
         return new PeeringToken(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing PeeringToken resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: PeeringTokenState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("consul:index/peeringToken:PeeringToken", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'consul:index/peeringToken:PeeringToken';
 

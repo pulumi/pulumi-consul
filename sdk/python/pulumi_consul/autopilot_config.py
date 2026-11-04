@@ -510,6 +510,28 @@ class AutopilotConfig(pulumi.CustomResource):
         __props__.__dict__["upgrade_version_tag"] = upgrade_version_tag
         return AutopilotConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+            redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cleanupDeadServers"] = cleanup_dead_servers
+        __props__["datacenter"] = datacenter
+        __props__["disableUpgradeMigration"] = disable_upgrade_migration
+        __props__["lastContactThreshold"] = last_contact_threshold
+        __props__["maxTrailingLogs"] = max_trailing_logs
+        __props__["redundancyZoneTag"] = redundancy_zone_tag
+        __props__["serverStabilizationTime"] = server_stabilization_time
+        __props__["upgradeVersionTag"] = upgrade_version_tag
+        return pulumi.runtime.exists_resource(None, 'consul:index/autopilotConfig:AutopilotConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cleanupDeadServers")
     def cleanup_dead_servers(self) -> pulumi.Output[Optional[_builtins.bool]]:

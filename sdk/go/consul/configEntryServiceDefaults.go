@@ -221,6 +221,12 @@ func (ConfigEntryServiceDefaultsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryServiceDefaultsState)(nil)).Elem()
 }
 
+// ConfigEntryServiceDefaultsExists checks whether an existing ConfigEntryServiceDefaults resource with the given ID exists.
+func ConfigEntryServiceDefaultsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryServiceDefaultsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults", id, state, "", opts...)
+}
+
 type configEntryServiceDefaultsArgs struct {
 	// Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
 	BalanceInboundConnections *string `pulumi:"balanceInboundConnections"`

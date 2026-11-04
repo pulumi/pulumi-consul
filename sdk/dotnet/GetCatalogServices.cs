@@ -214,8 +214,8 @@ namespace Pulumi.Consul
         /// A list of the Consul services found.  This will always contain the
         /// list of services found.
         /// * `services.&lt;service&gt;` - For each name given, the corresponding attribute is a
-        /// Terraform map of services and their tags.  The value is an alphanumerically
-        /// sorted, whitespace delimited set of tags associated with the service.
+        ///   Terraform map of services and their tags.  The value is an alphanumerically
+        ///   sorted, whitespace delimited set of tags associated with the service.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetCatalogServicesQueryOptionResult> QueryOptions;

@@ -163,6 +163,12 @@ func (CatalogEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogEntryState)(nil)).Elem()
 }
 
+// CatalogEntryExists checks whether an existing CatalogEntry resource with the given ID exists.
+func CatalogEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/catalogEntry:CatalogEntry", id, state, "", opts...)
+}
+
 type catalogEntryArgs struct {
 	// The address of the node being added to,
 	// or referenced in the catalog.

@@ -159,6 +159,12 @@ func (NetworkAreaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAreaState)(nil)).Elem()
 }
 
+// NetworkAreaExists checks whether an existing NetworkArea resource with the given ID exists.
+func NetworkAreaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAreaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/networkArea:NetworkArea", id, state, "", opts...)
+}
+
 type networkAreaArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.

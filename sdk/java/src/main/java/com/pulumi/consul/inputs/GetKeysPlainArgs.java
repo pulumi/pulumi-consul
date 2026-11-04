@@ -95,26 +95,22 @@ public final class GetKeysPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The ACL token to use. This overrides the token that the agent provides by default.
      * 
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     @Import(name="token")
     private @Nullable String token;
 
     /**
      * @return The ACL token to use. This overrides the token that the agent provides by default.
      * 
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
@@ -218,13 +214,11 @@ Please use the token argument in the provider configuration */
          * 
          * @return builder
          * 
-         * @deprecated
-         * The token argument has been deprecated and will be removed in a future release.
+         * @deprecated The token argument has been deprecated and will be removed in a future release.
          * Please use the token argument in the provider configuration
          * 
          */
-        @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+        @Deprecated
         public Builder token(@Nullable String token) {
             $.token = token;
             return this;

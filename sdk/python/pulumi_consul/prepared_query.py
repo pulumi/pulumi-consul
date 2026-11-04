@@ -887,6 +887,44 @@ class PreparedQuery(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         return PreparedQuery(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connect: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict', 'outputs.PreparedQueryDns']]] = None,
+            failover: pulumi.Input[Optional[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict', 'outputs.PreparedQueryFailover']]] = None,
+            ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            near: pulumi.Input[Optional[_builtins.str]] = None,
+            node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            session: pulumi.Input[Optional[_builtins.str]] = None,
+            stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict', 'outputs.PreparedQueryTemplate']]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connect"] = connect
+        __props__["datacenter"] = datacenter
+        __props__["dns"] = dns
+        __props__["failover"] = failover
+        __props__["ignoreCheckIds"] = ignore_check_ids
+        __props__["name"] = name
+        __props__["near"] = near
+        __props__["nodeMeta"] = node_meta
+        __props__["onlyPassing"] = only_passing
+        __props__["service"] = service
+        __props__["serviceMeta"] = service_meta
+        __props__["session"] = session
+        __props__["storedToken"] = stored_token
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["token"] = token
+        return pulumi.runtime.exists_resource(None, 'consul:index/preparedQuery:PreparedQuery', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def connect(self) -> pulumi.Output[Optional[_builtins.bool]]:

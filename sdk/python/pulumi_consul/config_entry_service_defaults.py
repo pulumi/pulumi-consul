@@ -868,6 +868,48 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         __props__.__dict__["upstream_configs"] = upstream_configs
         return ConfigEntryServiceDefaults(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            balance_inbound_connections: pulumi.Input[Optional[_builtins.str]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict', 'outputs.ConfigEntryServiceDefaultsDestination']]]]] = None,
+            envoy_extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict', 'outputs.ConfigEntryServiceDefaultsEnvoyExtension']]]]] = None,
+            exposes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict', 'outputs.ConfigEntryServiceDefaultsExpose']]]]] = None,
+            external_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            local_connect_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            local_request_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            max_inbound_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            mesh_gateways: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict', 'outputs.ConfigEntryServiceDefaultsMeshGateway']]]]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mutual_tls_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            transparent_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict', 'outputs.ConfigEntryServiceDefaultsTransparentProxy']]]]] = None,
+            upstream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict', 'outputs.ConfigEntryServiceDefaultsUpstreamConfig']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["balanceInboundConnections"] = balance_inbound_connections
+        __props__["destinations"] = destinations
+        __props__["envoyExtensions"] = envoy_extensions
+        __props__["exposes"] = exposes
+        __props__["externalSni"] = external_sni
+        __props__["localConnectTimeoutMs"] = local_connect_timeout_ms
+        __props__["localRequestTimeoutMs"] = local_request_timeout_ms
+        __props__["maxInboundConnections"] = max_inbound_connections
+        __props__["meshGateways"] = mesh_gateways
+        __props__["meta"] = meta
+        __props__["mode"] = mode
+        __props__["mutualTlsMode"] = mutual_tls_mode
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        __props__["protocol"] = protocol
+        __props__["transparentProxies"] = transparent_proxies
+        __props__["upstreamConfigs"] = upstream_configs
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="balanceInboundConnections")
     def balance_inbound_connections(self) -> pulumi.Output[Optional[_builtins.str]]:

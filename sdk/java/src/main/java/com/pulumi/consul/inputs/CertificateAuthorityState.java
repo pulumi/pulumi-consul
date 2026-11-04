@@ -19,22 +19,20 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
     /**
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
-     * @deprecated
-     * The config attribute is deprecated, please use configJson instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
+    @Deprecated
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
      * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
-     * @deprecated
-     * The config attribute is deprecated, please use configJson instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
+    @Deprecated
     public Optional<Output<Map<String,String>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -100,11 +98,10 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * The config attribute is deprecated, please use configJson instead.
+         * @deprecated The config attribute is deprecated, please use configJson instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use configJson instead. */
+        @Deprecated
         public Builder config(@Nullable Output<Map<String,String>> config) {
             $.config = config;
             return this;
@@ -115,11 +112,10 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * The config attribute is deprecated, please use configJson instead.
+         * @deprecated The config attribute is deprecated, please use configJson instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use configJson instead. */
+        @Deprecated
         public Builder config(Map<String,String> config) {
             return config(Output.of(config));
         }

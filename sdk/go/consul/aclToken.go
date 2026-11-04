@@ -186,6 +186,12 @@ func (AclTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenState)(nil)).Elem()
 }
 
+// AclTokenExists checks whether an existing AclToken resource with the given ID exists.
+func AclTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclToken:AclToken", id, state, "", opts...)
+}
+
 type aclTokenArgs struct {
 	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId *string `pulumi:"accessorId"`

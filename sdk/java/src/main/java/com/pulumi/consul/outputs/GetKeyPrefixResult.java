@@ -42,13 +42,11 @@ public final class GetKeyPrefixResult {
      */
     private Map<String,String> subkeys;
     /**
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     private @Nullable String token;
     private Map<String,String> var_;
 
@@ -94,13 +92,11 @@ Please use the token argument in the provider configuration */
         return this.subkeys;
     }
     /**
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }

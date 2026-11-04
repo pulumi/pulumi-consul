@@ -111,6 +111,12 @@ func (AdminPartitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*adminPartitionState)(nil)).Elem()
 }
 
+// AdminPartitionExists checks whether an existing AdminPartition resource with the given ID exists.
+func AdminPartitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdminPartitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/adminPartition:AdminPartition", id, state, "", opts...)
+}
+
 type adminPartitionArgs struct {
 	// Free form partition description.
 	Description *string `pulumi:"description"`

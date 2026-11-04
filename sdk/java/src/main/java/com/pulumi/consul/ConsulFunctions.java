@@ -954,15 +954,15 @@ public final class ConsulFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
-     *             .rules("node \"\" { policy = \"read\" }")
+     *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
      *             .datacenters("dc1")
      *             .build());
      * 
@@ -978,8 +978,8 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1022,15 +1022,15 @@ public final class ConsulFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
-     *             .rules("node \"\" { policy = \"read\" }")
+     *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
      *             .datacenters("dc1")
      *             .build());
      * 
@@ -1046,8 +1046,8 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1090,15 +1090,15 @@ public final class ConsulFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
-     *             .rules("node \"\" { policy = \"read\" }")
+     *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
      *             .datacenters("dc1")
      *             .build());
      * 
@@ -1114,8 +1114,8 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1158,15 +1158,15 @@ public final class ConsulFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
-     *             .rules("node \"\" { policy = \"read\" }")
+     *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
      *             .datacenters("dc1")
      *             .build());
      * 
@@ -1182,8 +1182,8 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1226,15 +1226,15 @@ public final class ConsulFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
-     *             .rules("node \"\" { policy = \"read\" }")
+     *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
      *             .datacenters("dc1")
      *             .build());
      * 
@@ -1250,8 +1250,8 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2017,11 +2017,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static Output<GetCatalogNodesResult> getCatalogNodes() {
         return getCatalogNodes(GetCatalogNodesArgs.Empty, InvokeOptions.Empty);
     }
@@ -2083,11 +2082,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain() {
         return getCatalogNodesPlain(GetCatalogNodesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -2149,11 +2147,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static Output<GetCatalogNodesResult> getCatalogNodes(GetCatalogNodesArgs args) {
         return getCatalogNodes(args, InvokeOptions.Empty);
     }
@@ -2215,11 +2212,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain(GetCatalogNodesPlainArgs args) {
         return getCatalogNodesPlain(args, InvokeOptions.Empty);
     }
@@ -2281,11 +2277,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static Output<GetCatalogNodesResult> getCatalogNodes(GetCatalogNodesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogNodes:getCatalogNodes", TypeShape.of(GetCatalogNodesResult.class), args, Utilities.withVersion(options));
     }
@@ -2347,11 +2342,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static Output<GetCatalogNodesResult> getCatalogNodes(GetCatalogNodesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogNodes:getCatalogNodes", TypeShape.of(GetCatalogNodesResult.class), args, Utilities.withVersion(options));
     }
@@ -2413,11 +2407,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogNodes has been deprecated in favor of getNodes
+     * @deprecated getCatalogNodes has been deprecated in favor of getNodes
      * 
      */
-    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
+    @Deprecated
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain(GetCatalogNodesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogNodes:getCatalogNodes", TypeShape.of(GetCatalogNodesResult.class), args, Utilities.withVersion(options));
     }
@@ -2477,11 +2470,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogService has been deprecated in favor of getService
+     * @deprecated getCatalogService has been deprecated in favor of getService
      * 
      */
-    @Deprecated /* getCatalogService has been deprecated in favor of getService */
+    @Deprecated
     public static Output<GetCatalogServiceResult> getCatalogService(GetCatalogServiceArgs args) {
         return getCatalogService(args, InvokeOptions.Empty);
     }
@@ -2541,11 +2533,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogService has been deprecated in favor of getService
+     * @deprecated getCatalogService has been deprecated in favor of getService
      * 
      */
-    @Deprecated /* getCatalogService has been deprecated in favor of getService */
+    @Deprecated
     public static CompletableFuture<GetCatalogServiceResult> getCatalogServicePlain(GetCatalogServicePlainArgs args) {
         return getCatalogServicePlain(args, InvokeOptions.Empty);
     }
@@ -2605,11 +2596,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogService has been deprecated in favor of getService
+     * @deprecated getCatalogService has been deprecated in favor of getService
      * 
      */
-    @Deprecated /* getCatalogService has been deprecated in favor of getService */
+    @Deprecated
     public static Output<GetCatalogServiceResult> getCatalogService(GetCatalogServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogService:getCatalogService", TypeShape.of(GetCatalogServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -2669,11 +2659,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogService has been deprecated in favor of getService
+     * @deprecated getCatalogService has been deprecated in favor of getService
      * 
      */
-    @Deprecated /* getCatalogService has been deprecated in favor of getService */
+    @Deprecated
     public static Output<GetCatalogServiceResult> getCatalogService(GetCatalogServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogService:getCatalogService", TypeShape.of(GetCatalogServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -2733,11 +2722,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogService has been deprecated in favor of getService
+     * @deprecated getCatalogService has been deprecated in favor of getService
      * 
      */
-    @Deprecated /* getCatalogService has been deprecated in favor of getService */
+    @Deprecated
     public static CompletableFuture<GetCatalogServiceResult> getCatalogServicePlain(GetCatalogServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogService:getCatalogService", TypeShape.of(GetCatalogServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -2798,11 +2786,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static Output<GetCatalogServicesResult> getCatalogServices() {
         return getCatalogServices(GetCatalogServicesArgs.Empty, InvokeOptions.Empty);
     }
@@ -2863,11 +2850,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain() {
         return getCatalogServicesPlain(GetCatalogServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -2928,11 +2914,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static Output<GetCatalogServicesResult> getCatalogServices(GetCatalogServicesArgs args) {
         return getCatalogServices(args, InvokeOptions.Empty);
     }
@@ -2993,11 +2978,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain(GetCatalogServicesPlainArgs args) {
         return getCatalogServicesPlain(args, InvokeOptions.Empty);
     }
@@ -3058,11 +3042,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static Output<GetCatalogServicesResult> getCatalogServices(GetCatalogServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }
@@ -3123,11 +3106,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static Output<GetCatalogServicesResult> getCatalogServices(GetCatalogServicesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }
@@ -3188,11 +3170,10 @@ public final class ConsulFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * getCatalogServices has been deprecated in favor of getServices
+     * @deprecated getCatalogServices has been deprecated in favor of getServices
      * 
      */
-    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
+    @Deprecated
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain(GetCatalogServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }

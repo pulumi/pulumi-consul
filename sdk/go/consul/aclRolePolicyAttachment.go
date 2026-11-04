@@ -126,6 +126,12 @@ func (AclRolePolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRolePolicyAttachmentState)(nil)).Elem()
 }
 
+// AclRolePolicyAttachmentExists checks whether an existing AclRolePolicyAttachment resource with the given ID exists.
+func AclRolePolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclRolePolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment", id, state, "", opts...)
+}
+
 type aclRolePolicyAttachmentArgs struct {
 	// The policy name.
 	Policy string `pulumi:"policy"`

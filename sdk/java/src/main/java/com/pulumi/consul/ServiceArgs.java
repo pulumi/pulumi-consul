@@ -74,20 +74,18 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * The external field has been deprecated and does nothing.
+     * @deprecated The external field has been deprecated and does nothing.
      * 
      */
-    @Deprecated /* The external field has been deprecated and does nothing. */
+    @Deprecated
     @Import(name="external")
     private @Nullable Output<Boolean> external;
 
     /**
-     * @deprecated
-     * The external field has been deprecated and does nothing.
+     * @deprecated The external field has been deprecated and does nothing.
      * 
      */
-    @Deprecated /* The external field has been deprecated and does nothing. */
+    @Deprecated
     public Optional<Output<Boolean>> external() {
         return Optional.ofNullable(this.external);
     }
@@ -343,11 +341,10 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * The external field has been deprecated and does nothing.
+         * @deprecated The external field has been deprecated and does nothing.
          * 
          */
-        @Deprecated /* The external field has been deprecated and does nothing. */
+        @Deprecated
         public Builder external(@Nullable Output<Boolean> external) {
             $.external = external;
             return this;
@@ -356,11 +353,10 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * The external field has been deprecated and does nothing.
+         * @deprecated The external field has been deprecated and does nothing.
          * 
          */
-        @Deprecated /* The external field has been deprecated and does nothing. */
+        @Deprecated
         public Builder external(Boolean external) {
             return external(Output.of(external));
         }

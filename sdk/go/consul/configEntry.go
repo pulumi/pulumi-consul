@@ -602,6 +602,12 @@ func (ConfigEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryState)(nil)).Elem()
 }
 
+// ConfigEntryExists checks whether an existing ConfigEntry resource with the given ID exists.
+func ConfigEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntry:ConfigEntry", id, state, "", opts...)
+}
+
 type configEntryArgs struct {
 	// An arbitrary map of configuration values.
 	ConfigJson *string `pulumi:"configJson"`

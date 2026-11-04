@@ -438,6 +438,24 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         __props__.__dict__["sources"] = sources
         return ConfigEntryServiceIntentions(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            jwts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict', 'outputs.ConfigEntryServiceIntentionsJwt']]]]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict', 'outputs.ConfigEntryServiceIntentionsSource']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["jwts"] = jwts
+        __props__["meta"] = meta
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        __props__["sources"] = sources
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def jwts(self) -> pulumi.Output[Optional[Sequence['outputs.ConfigEntryServiceIntentionsJwt']]]:

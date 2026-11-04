@@ -397,6 +397,22 @@ class CatalogEntry(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         return CatalogEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["datacenter"] = datacenter
+        __props__["node"] = node
+        __props__["services"] = services
+        __props__["token"] = token
+        return pulumi.runtime.exists_resource(None, 'consul:index/catalogEntry:CatalogEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

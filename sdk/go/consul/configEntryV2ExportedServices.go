@@ -110,6 +110,12 @@ func (ConfigEntryV2ExportedServicesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryV2ExportedServicesState)(nil)).Elem()
 }
 
+// ConfigEntryV2ExportedServicesExists checks whether an existing ConfigEntryV2ExportedServices resource with the given ID exists.
+func ConfigEntryV2ExportedServicesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryV2ExportedServicesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", id, state, "", opts...)
+}
+
 type configEntryV2ExportedServicesArgs struct {
 	// The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
 	Kind string `pulumi:"kind"`

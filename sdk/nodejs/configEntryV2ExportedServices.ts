@@ -18,6 +18,17 @@ export class ConfigEntryV2ExportedServices extends pulumi.CustomResource {
         return new ConfigEntryV2ExportedServices(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ConfigEntryV2ExportedServices resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ConfigEntryV2ExportedServicesState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices';
 

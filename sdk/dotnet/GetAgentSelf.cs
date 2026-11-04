@@ -15,7 +15,6 @@ namespace Pulumi.Consul
         /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
         /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
         /// 
-        /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
         /// from the agent specified in the `Provider`.
@@ -29,7 +28,6 @@ namespace Pulumi.Consul
         /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
         /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
         /// 
-        /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
         /// from the agent specified in the `Provider`.
@@ -42,7 +40,6 @@ namespace Pulumi.Consul
         /// <summary>
         /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
         /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
-        /// 
         /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
@@ -100,7 +97,7 @@ namespace Pulumi.Consul
         /// A map of DNS configuration attributes.  See below for details on the
         /// contents of the `Dns` attribute.
         /// * [`DnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-        /// list of all DNS recursors.
+        ///   list of all DNS recursors.
         /// * [`DataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
         /// * [`Datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
         /// * [`DevMode`](https://www.consul.io/docs/agent/options.html#_dev)
@@ -131,11 +128,11 @@ namespace Pulumi.Consul
         /// * [`RejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
         /// * [`RetryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
         /// * [`RetryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-        /// A map of EC2 retry attributes.  See below for details on the available
-        /// information.
+        ///   A map of EC2 retry attributes.  See below for details on the available
+        ///   information.
         /// * [`RetryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-        /// A map of GCE retry attributes.  See below for details on the available
-        /// information.
+        ///   A map of GCE retry attributes.  See below for details on the available
+        ///   information.
         /// * [`RetryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
         /// * [`RetryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
         /// * [`RetryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
@@ -156,7 +153,7 @@ namespace Pulumi.Consul
         /// * [`TlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
         /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
         /// * [`Telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-        /// of telemetry configuration.
+        ///   of telemetry configuration.
         /// * [`TranslateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
         /// * [`UiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
         /// * [`UnixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
